@@ -1,0 +1,14 @@
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\bin\Debug\net8.0\taskee.exe
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\bin\Debug\net8.0\taskee.deps.json
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\bin\Debug\net8.0\taskee.runtimeconfig.json
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\bin\Debug\net8.0\taskee.dll
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\bin\Debug\net8.0\taskee.pdb
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\obj\Debug\net8.0\taskee.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\obj\Debug\net8.0\taskee.AssemblyInfoInputs.cache
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\obj\Debug\net8.0\taskee.AssemblyInfo.cs
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\obj\Debug\net8.0\taskee.csproj.CoreCompileInputs.cache
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\obj\Debug\net8.0\taskee.dll
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\obj\Debug\net8.0\refint\taskee.dll
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\obj\Debug\net8.0\taskee.pdb
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\obj\Debug\net8.0\taskee.genruntimeconfig.cache
+C:\Users\aousj\Min enhet\Miun\k12 - DT071G C#.NET\Projekt\taskee\obj\Debug\net8.0\ref\taskee.dll
