@@ -16,16 +16,18 @@ class Program
 
         void showOptions()
         {
-
+            Console.WriteLine("\n");
             Console.WriteLine("1. Show all tasks. ");
 
             Console.WriteLine("2. Add a new task. ");
 
-            Console.WriteLine("3. Show tasks and categorize by Date.");
+            Console.WriteLine("3. Show tasks and order by date.");
 
-            Console.WriteLine("4. Show tasks and categorize by Urgency.");
+            Console.WriteLine("4. Show tasks and order by urgency.");
 
-            Console.WriteLine("5. Delete a task. ");
+            Console.WriteLine("5. Show task by ID. ");
+
+            Console.WriteLine("6. Delete a task. ");
 
             Console.WriteLine("0. Exit program. \n ");
 
@@ -53,6 +55,36 @@ class Program
                     case 2:
                         Console.WriteLine("You have choosen to add a new task.\n");
                         addNewClass();
+                        break;
+
+                    case 3:
+                        Console.WriteLine("You have choosen to show all tasks orderd by date.\n");
+                        task.showAllTasksOrderByDate();
+                        break;
+
+                    case 4:
+                        Console.WriteLine("You have choosen to show all tasks orderd by urgency.\n");
+
+                        task.showAllTaskOrderByUrgency();
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Please enter the ID of the task you want to see.\n");
+
+                        task.showTaskById();
+                        break;
+
+                    case 6:
+                        Console.WriteLine("Please enter the ID of the task you want to delete.\n");
+
+                        task.deleteTaskById();
+                        break;
+
+
+                    case 0:
+
+                        Console.WriteLine("Bye bye! :)\n");
+                        Environment.Exit(0);
                         break;
 
                 }
@@ -125,7 +157,7 @@ class Program
                 Console.WriteLine("Kindly choose urgency level: ");
                 Console.WriteLine("1. Low");
                 Console.WriteLine("2. Medium");
-                Console.WriteLine("3. High");
+                Console.WriteLine("3. Urgent");
 
                 var option = Console.ReadLine();
 

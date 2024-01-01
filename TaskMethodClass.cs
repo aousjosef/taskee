@@ -1,6 +1,8 @@
 using System.Text.Json;
 
 namespace TaskMethod;
+using System.Collections.Generic;
+
 
 
 //Class som skapar object för vår JSON
@@ -67,8 +69,6 @@ class TaskMethodClass
     }
 
 
-
-
     //Lägg till ny task
     public void addNewTask(TaskObjectClass task)
     {
@@ -85,29 +85,122 @@ class TaskMethodClass
 
 
 
-
-
-
-
-
-
-
-
     public void showAllTasks()
     {
 
         int indexOfNote = 0;
-
+        Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------");
+        Console.WriteLine("ID | Task Name                           | Date and Time           | Urgency  | Details                                     |");
+        Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------");
         foreach (var t in Tasks)
         {
-            Console.WriteLine($"({indexOfNote}) - {t.TaskName} \n");
-            Console.WriteLine($"Date: {t.TaskDateTime} \n");
-            Console.WriteLine($"Level of urgency: {t.TaskUrgencyLevel} \n");
-            Console.WriteLine($"Details: {t.TaskDetails} \n \n");
+            Console.WriteLine($"|{indexOfNote,-2}| {TruncateString(t.TaskName, 35),-35} | {t.TaskDateTime,-23} | {t.TaskUrgencyLevel,-8} | {TruncateString(t.TaskDetails, 43),-43} |");
 
             indexOfNote++;
         }
+        Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------");
     }
 
+
+    public void showAllTasksOrderByDate()
+    {
+
+        var orderedTasksDescending = Tasks.OrderByDescending(task => task.TaskDateTime);
+
+        presentListData(orderedTasksDescending);
+
+
+    }
+
+    public void showAllTaskOrderByUrgency()
+    {
+        var orderedTasksByUrgency = Tasks.OrderByDescending(task => task.TaskUrgencyLevel);
+        presentListData(orderedTasksByUrgency);
+
+    }
+
+
+    public void showTaskById()
+    {
+        var taskIdinput = Console.ReadLine();
+
+        if (int.TryParse(taskIdinput, out int taskId) && taskId >= 0 && taskId <= Tasks.Count - 1)
+        {
+            var taskById = Tasks[taskId];
+
+            Console.WriteLine($"({taskId}) - {taskById.TaskName} \n");
+            Console.WriteLine($"Date: {taskById.TaskDateTime} \n");
+            Console.WriteLine($"Level of urgency: {taskById.TaskUrgencyLevel} \n");
+            Console.WriteLine($"Details: {taskById.TaskDetails} \n \n");
+
+        }
+
+        else
+        {
+            Console.WriteLine("Invalid task ID. Please provide a valid ID between 0 and " + (Tasks.Count - 1));
+            return;
+        }
+
+    }
+
+    public void deleteTaskById()
+    {
+        var taskIdinput = Console.ReadLine();
+
+        if (int.TryParse(taskIdinput, out int taskId) && taskId >= 0 && taskId <= Tasks.Count - 1)
+        {
+            Tasks.RemoveAt(taskId);
+            string jsonString = JsonSerializer.Serialize(Tasks);
+
+            File.WriteAllText(fileName, jsonString);
+            Console.WriteLine($"note with index {taskId} succesfully removed!");
+
+        }
+
+        else
+        {
+            Console.WriteLine($"Erorr! value must be a a number between 0 and {Tasks.Count - 1}");
+            return;
+        }
+
+    }
+
+
+
+
+
+
+    //IEnumerable tar emot båda lista och IEnumerable
+    void presentListData(IEnumerable<TaskObjectClass> tasks)
+    {
+        Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------");
+        Console.WriteLine("| Task Name                           | Date and Time           | Urgency  | Details                                      |");
+        Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------");
+
+        foreach (var t in tasks)
+        {
+            Console.WriteLine($"| {TruncateString(t.TaskName, 35),-35} | {t.TaskDateTime,-23} | {t.TaskUrgencyLevel,-8} | {TruncateString(t.TaskDetails, 43),-43} |");
+        }
+
+        Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------");
+    }
+
+
+
+    // Helper method to truncate long strings for display
+    static string TruncateString(string input, int maxLength)
+    {
+        // if longer than max
+        if (input.Length > maxLength)
+        {
+            return input.Substring(0, maxLength - 3) + "...";
+        }
+
+        else
+        {
+            return input;
+        }
+
+    }
 
 }
