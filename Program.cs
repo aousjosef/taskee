@@ -10,9 +10,9 @@ class Program
         TaskMethodClass task = new TaskMethodClass();
 
         Console.WriteLine("\n ");
-        Console.WriteLine("**************** WELCOME TO **************** \n");
-        Console.WriteLine("T  A  S  K  E  E \n ");
-        Console.WriteLine("Please choose on of the options below: ");
+        Console.WriteLine($"**************** WELCOME TO **************** \n");
+        Console.WriteLine("              T  A  S  K  E  E \n ");
+        Console.WriteLine("    Please choose on of the options below: ");
 
         void showOptions()
         {

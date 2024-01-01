@@ -153,7 +153,7 @@ class TaskMethodClass
             string jsonString = JsonSerializer.Serialize(Tasks);
 
             File.WriteAllText(fileName, jsonString);
-            Console.WriteLine($"note with index {taskId} succesfully removed!");
+            Console.WriteLine($"Task with index {taskId} succesfully removed!");
 
         }
 
