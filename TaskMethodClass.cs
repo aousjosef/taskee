@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace TaskMethodClass;
+namespace TaskMethod;
 
 
 //Class som skapar object för vår JSON
@@ -8,17 +8,15 @@ public class TaskObjectClass
 {
 
     //Enum med spcifika värden
-    public enum TaskCategory
-    {
-        Low,
-        Medium,
-        High
-    }
+
 
     public string? TaskName { get; set; }
-    public string? TaskContent { get; set; }
+
     public DateTime TaskDateTime { get; set; }
-    public TaskCategory TaskUrgencyLevel { get; set; }
+    public string? TaskUrgencyLevel { get; set; }
+
+    public string? TaskDetails { get; set; }
+
 
 
 }
@@ -34,7 +32,7 @@ class TaskMethodClass
     string? jsonContent;
 
 
-// konstruktor som intierar metoden converJsonFileToList
+    // konstruktor som intierar metoden converJsonFileToList
     public TaskMethodClass()
     {
         converJsonFileToList();
@@ -67,5 +65,49 @@ class TaskMethodClass
 
 
     }
+
+
+
+
+    //Lägg till ny task
+    public void addNewTask(TaskObjectClass task)
+    {
+
+        Tasks.Add(task);
+
+        string jsonString = JsonSerializer.Serialize(Tasks);
+
+        File.WriteAllText(fileName, jsonString);
+
+        Console.WriteLine("Great, a new task has been added! \n");
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public void showAllTasks()
+    {
+
+        int indexOfNote = 0;
+
+        foreach (var t in Tasks)
+        {
+            Console.WriteLine($"({indexOfNote}) - {t.TaskName} \n");
+            Console.WriteLine($"Date: {t.TaskDateTime} \n");
+            Console.WriteLine($"Level of urgency: {t.TaskUrgencyLevel} \n");
+            Console.WriteLine($"Details: {t.TaskDetails} \n \n");
+
+            indexOfNote++;
+        }
+    }
+
 
 }
