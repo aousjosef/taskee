@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Globalization;
 namespace TaskMethod;
-using System.Collections.Generic;
+
 
 
 
@@ -60,7 +60,7 @@ class TaskMethodClass
 
             jsonContent = File.ReadAllText(fileName);
 
-            // Deserialize the JSON content into a list of NoteClass objects
+            // Deserialize the JSON content into a list of TaskeObject class
             Tasks = JsonSerializer.Deserialize<List<TaskObjectClass>>(jsonContent);
 
         }
