@@ -1,26 +1,20 @@
 using System.Text.Json;
 using System.Globalization;
+
+
+
 namespace TaskMethod;
-
-
 
 
 //Class som skapar object för vår JSON
 public class TaskObjectClass
 {
-
-    //Enum med spcifika värden
-
-
     public string? TaskName { get; set; }
 
     public DateTime TaskDateTime { get; set; }
     public string? TaskUrgencyLevel { get; set; }
 
     public string? TaskDetails { get; set; }
-
-
-
 }
 
 class TaskMethodClass
@@ -55,6 +49,7 @@ class TaskMethodClass
         }
 
         else
+
         {
             //Read all content of json file. put into string.
 
@@ -236,7 +231,6 @@ class TaskMethodClass
 
         presentListData(orderedTasksDescending);
 
-
     }
 
     public void showAllTaskOrderByUrgency()
@@ -284,14 +278,14 @@ class TaskMethodClass
 
         if (int.TryParse(taskIdInput, out int taskId) && taskId >= 0 && taskId <= Tasks.Count - 1)
         {
-            var taskToEdit = Tasks[taskId];
+          
 
             Console.WriteLine($"Editing Task with ID: {taskId}");
             Console.WriteLine("Enter new Task Name (press Enter to keep existing): \n");
             var newTaskName = Console.ReadLine();
             if (!string.IsNullOrEmpty(newTaskName))
             {
-                taskToEdit.TaskName = newTaskName;
+                Tasks[taskId].TaskName = newTaskName;
             }
 
             Console.WriteLine("Enter new Date and Time (press Enter to keep existing):");
@@ -299,7 +293,7 @@ class TaskMethodClass
             var newDateTimeInput = Console.ReadLine();
             if (!string.IsNullOrEmpty(newDateTimeInput) && DateTime.TryParse(newDateTimeInput, out DateTime newDateTime))
             {
-                taskToEdit.TaskDateTime = newDateTime;
+                Tasks[taskId].TaskDateTime = newDateTime;
             }
 
             Console.WriteLine("Enter new Urgency Level (press Enter to keep existing): ");
@@ -316,16 +310,16 @@ class TaskMethodClass
                 {
                     //Case 1 visa all  notes
                     case 1:
-                        taskToEdit.TaskUrgencyLevel = "Low";
+                        Tasks[taskId].TaskUrgencyLevel = "Low";
                         break;
 
 
                     case 2:
-                        taskToEdit.TaskUrgencyLevel = "Medium";
+                        Tasks[taskId].TaskUrgencyLevel = "Medium";
                         break;
 
                     case 3:
-                        taskToEdit.TaskUrgencyLevel = "Urgent";
+                        Tasks[taskId].TaskUrgencyLevel = "Urgent";
                         break;
                 }
 
@@ -336,7 +330,7 @@ class TaskMethodClass
             var newTaskDetails = Console.ReadLine();
             if (!string.IsNullOrEmpty(newTaskDetails))
             {
-                taskToEdit.TaskDetails = newTaskDetails;
+                Tasks[taskId].TaskDetails = newTaskDetails;
             }
 
             // Save the updated list to the file
@@ -400,7 +394,7 @@ class TaskMethodClass
 
 
     // Helper method to truncate long strings for display
-    static string TruncateString(string input, int maxLength)
+    string TruncateString(string input, int maxLength)
     {
         // if longer than max
         if (input.Length > maxLength)
