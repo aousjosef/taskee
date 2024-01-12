@@ -41,7 +41,7 @@ class Program
         {
             showOptions();
             var option = Console.ReadLine();
-            Console.CursorVisible = true;
+        
 
             if (int.TryParse(option, out int num))
             {
@@ -101,15 +101,6 @@ class Program
         }
         //while loop ends
 
-
-
-
-
-
-
-
-
-        // task.addNewTask();
 
     }
 
